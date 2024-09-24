@@ -4,6 +4,7 @@ import com.fif.Model.Person;
 import com.fif.service.impl.PersonServiceImpl;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zul.ListModelList;
 
 import java.util.Date;
@@ -41,6 +42,7 @@ public class SearchViewModel{
     }
 
     @Command
+    @NotifyChange("selectedPerson")
     public void search(){
         selectedPerson = null;
         personList.clear();
@@ -48,10 +50,33 @@ public class SearchViewModel{
     }
 
     @Command
+    @NotifyChange("selectedPerson")
     public void delete(){
         if(selectedPerson == null) throw new RuntimeException("Please select person before delete");
         personService.delete(selectedPerson);
+        selectedPerson = null;
         search();
+    }
+
+    @Command
+    @NotifyChange("selectedPerson")
+    public void update(){
+        if(selectedPerson == null) throw new RuntimeException("Please select person before edit");
+//        personService.update(selectedPerson);
+        selectedPerson = null;
+        search();
+    }
+
+    @Command
+    @NotifyChange({"username", "gender", "birthday", "age", "province","selectedPerson"})
+    public void updateForm(){
+        if(selectedPerson == null) throw new RuntimeException("Please select person before edit");
+        username = selectedPerson.getUsername();
+        gender = selectedPerson.getGender();
+        birthday = selectedPerson.getBirthday();
+        age = selectedPerson.getAge();
+        province = selectedPerson.getProvince();
+        Executions.sendRedirect("/form.zul");
     }
 
     @Command

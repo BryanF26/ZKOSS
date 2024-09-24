@@ -2,20 +2,20 @@
     <borderlayout hflex="1" vflex="1">
         <west collapsible="true" splittable="true">
             <menubar orient="vertical" autodrop="true">
-                <menuitem label="Home" href="/index.zul"/>
-                <menu label="Content">
+                <menuitem label="Home" href="/index.zul" iconSclass="z-icon-home"/>
+                <menu label="Content" iconSclass="z-icon-dashboard">
                     <menupopup>
-                        <menuitem label="Form" href="/form.zul"/>
-                        <menuitem label="Table" href="/table.zul"/>
+                        <menuitem label="Form" href="/form.zul" iconSclass="z-icon-file"/>
+                        <menuitem label="Table" href="/table.zul" iconSclass="z-icon-table"/>
                     </menupopup>
                 </menu>
-                <menu label="FAQ">
+                <menu label="FAQ" iconSclass="z-icon-info-circle z-icon-spin">
                     <menupopup>
-                        <menuitem label="Term Of Use" href="/term.zul"/>
-                        <menuitem label="Help" href="/help.zul"/>
+                        <menuitem label="Term Of Use" href="/term.zul" iconSclass="z-icon-file-text-o"/>
+                        <menuitem label="Help" href="/help.zul" iconSclass="z-icon-question-circle"/>
                     </menupopup>
                 </menu>
-                <menuitem label="Demo" href="/hello-world.zul"/>
+                <menuitem label="Demo" href="/hello-world.zul" iconSclass="z-icon-support"/>
             </menubar>
         </west>
         <center>

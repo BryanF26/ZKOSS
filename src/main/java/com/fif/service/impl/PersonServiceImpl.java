@@ -31,6 +31,8 @@ public class PersonServiceImpl implements PersonService {
             for (Person p : personList){
                 if(p.getUsername().toLowerCase().contains(keyword.toLowerCase())){
                     res.add(p);
+                } else if(p.getGender().equalsIgnoreCase(keyword.toLowerCase())){
+                    res.add(p);
                 }
             }
         }

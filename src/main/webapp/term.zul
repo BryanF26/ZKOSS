@@ -1,7 +1,7 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
 <zk>
     <vlayout self="@define(content)">
-        <button href="/form.zul" sclass="back-button" style="top:10px; left:10px" label="Go To Form"/>
+        <button href="/form.zul" sclass="back-button" style="top:10px; left:10px" label="Go To Form" iconSclass="z-icon-file"/>
         Term of Use
     </vlayout>
 </zk>

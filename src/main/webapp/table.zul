@@ -1,15 +1,65 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
 <zk>
+    <style>
+        .custom-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+        }
+
+        .custom-button:hover {
+        background-color: #0056b3;
+        }
+
+        .back-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #6c757d;
+        color: white;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        }
+
+        .custom-listbox {
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-label {
+        font-weight: bold;
+        color: #333;
+        margin: 5px 0;
+        }
+
+        .custom-textbox {
+        width: 300px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 10px;
+        }
+    </style>
+
     <window title="Search" onOK="@command('search')" self="@define(content)" viewModel="@id('vm')@init('com.fif.viewModel.SearchViewModel')">
-        <button href="/form.zul" sclass="back-button" style="top:10px; left:10px" label="Go To Form"/>
-        <vlayout>
-            Keyword:
-            <textbox value="@save(vm.keyword)"/>
-            <button label="Search" iconSclass="z-icon-search" onClick="@command('search')"/>
-            <button label="Delete" iconSclass="z-icon-trash" onClick="@command('delete')"/>
+        <button href="/form.zul" sclass="back-button" label="Go To Form" iconSclass="z-icon-file"/>
+        <vlayout style="padding: 20px;">
+            <label class="custom-label">Keyword:</label>
+            <textbox value="@save(vm.keyword)" sclass="custom-textbox"/>
+            <hlayout>
+                <button label="Search" iconSclass="z-icon-search" onClick="@command('search')" sclass="custom-button"/>
+                <button label="Delete" iconSclass="z-icon-trash" onClick="@command('delete')" sclass="custom-button"/>
+                <button label="Edit" iconSclass="z-icon-edit" onClick="@command('updateForm')" sclass="custom-button"/>
+            </hlayout>
         </vlayout>
-        <vlayout>
-            <listbox model="@init(vm.personList)" selectedItem="@save(vm.selectedPerson)" autopaging="true" rows="5" emptyMessage="No person found in the result.">
+        <vlayout style="padding: 20px;">
+            <listbox model="@init(vm.personList)" selectedItem="@save(vm.selectedPerson)" autopaging="true" rows="5" sclass="custom-listbox" emptyMessage="No person found in the result.">
                 <listhead sizable="true">
                     <listheader label="ID"/>
                     <listheader label="Username"/>
@@ -23,9 +73,9 @@
                     </listitem>
                 </template>
             </listbox>
-            <label value="@load(vm.selectedPerson.birthday)"/>
-            <label value="@load(vm.selectedPerson.age)"/>
-            <label value="@load(vm.selectedPerson.province)"/>
+            <label class="custom-label" value="@load(vm.selectedPerson.birthday)"/>
+            <label class="custom-label" value="@load(vm.selectedPerson.age)"/>
+            <label class="custom-label" value="@load(vm.selectedPerson.province)"/>
         </vlayout>
     </window>
 </zk>
