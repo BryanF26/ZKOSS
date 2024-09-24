@@ -1,0 +1,38 @@
+<zk>
+    <borderlayout hflex="1" vflex="1">
+        <west collapsible="true" splittable="true">
+            <menubar orient="vertical" autodrop="true">
+                <menuitem label="Home" href="/index.zul"/>
+                <menu label="Content">
+                    <menupopup>
+                        <menuitem label="Form" href="/form.zul"/>
+                        <menuitem label="Table" href="/table.zul"/>
+                    </menupopup>
+                </menu>
+                <menu label="FAQ">
+                    <menupopup>
+                        <menuitem label="Term Of Use" href="/term.zul"/>
+                        <menuitem label="Help" href="/help.zul"/>
+                    </menupopup>
+                </menu>
+                <menuitem label="Demo" href="/hello-world.zul"/>
+            </menubar>
+        </west>
+        <center>
+            <borderlayout hflex="1" vflex="1">
+                <north>
+                        <vbox hflex="1" vflex="1" align="center" pack="center">
+                            <label value="Welcome"/>
+                        </vbox>
+                </north>
+                <center self="@insert(content)">
+                </center>
+                <south>
+                    <vbox hflex="1" vflex="1" align="center" pack="center">
+                        <label value="Comeback Again"/>
+                    </vbox>
+                </south>
+            </borderlayout>
+        </center>
+    </borderlayout>
+</zk>

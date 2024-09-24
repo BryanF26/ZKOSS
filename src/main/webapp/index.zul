@@ -1,0 +1,14 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
+<zk>
+	<window apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('com.fif.MyViewModel')"
+		validationMessages="@id('vmsgs')" self="@define(content)">
+		<label value="Welcome"/>
+		<hlayout>count: <label value="@load(vm.count)" /></hlayout>
+		<hlayout>count: <label value="@load(vm.name)" /></hlayout>
+		<vbox spacing="10px">
+			<button label="add" onClick="@command('cmd')"/>
+			<button label="ganti" onClick="@command('change')"/>
+		</vbox>
+	</window>
+</zk>

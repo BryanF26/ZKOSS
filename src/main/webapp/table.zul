@@ -1,0 +1,27 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
+<zk>
+    <window apply="com.fif.controller.SearchController">
+        <vlayout self="@define(content)">
+            <button href="/form.zul" sclass="back-button" style="top:10px; left:10px">Back</button>
+            <textbox id="keyword"/>
+            <button id="searchButton" label="Search" iconSclass="z-icon-search"/>
+            <listbox id="personListBox" autopaging="true" rows="5" emptyMessage="No person found in the result.">
+                <listhead>
+                    <listheader label="ID" sort="auto"/>
+                    <listheader label="Username" sort="auto"/>
+                    <listheader label="Gender" sort="auto"/>
+                </listhead>
+                <template name="model">
+                    <listitem>
+                        <listcell label="${each.id}" />
+                        <listcell label="${each.username}" />
+                        <listcell label="${each.gender}" />
+                    </listitem>
+                </template>
+            </listbox>
+            <label id="birthdayLabel"/>
+            <label id="ageLabel"/>
+            <label id="provinceLabel"/>
+        </vlayout>
+    </window>
+</zk>
