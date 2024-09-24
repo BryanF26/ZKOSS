@@ -3,6 +3,7 @@ package com.fif.viewModel;
 import com.fif.Model.Person;
 import com.fif.service.impl.PersonServiceImpl;
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zul.ListModelList;
 
 import java.util.Date;
@@ -17,6 +18,9 @@ public class SearchViewModel{
     private Date birthday;
     private int age;
     private String province;
+    private boolean submitDisabled = true;
+    private boolean termChecked = false;
+    private String submitStyle = "background-color: #b0b0b0; color: white; border: none; padding: 8px 16px; margin-left: 10px; border-radius: 5px; cursor: not-allowed;";
 
     private List<Person> personList = new ListModelList<>();
 
@@ -29,8 +33,10 @@ public class SearchViewModel{
     }
 
     @Command
+    @NotifyChange({"username", "gender", "birthday", "age", "province","submitDisabled","submitStyle","termChecked"})
     public void add(){
         personService.add(UUID.randomUUID().toString(), this.username, this.gender, this.birthday, this.age, this.province);
+        reset();
         search();
     }
 
@@ -46,6 +52,30 @@ public class SearchViewModel{
         if(selectedPerson == null) throw new RuntimeException("Please select person before delete");
         personService.delete(selectedPerson);
         search();
+    }
+
+    @Command
+    @NotifyChange({"username", "gender", "birthday", "age", "province","submitDisabled","submitStyle","termChecked"})
+    public void reset(){
+        username = "";
+        gender = null;
+        birthday = null;
+        age = 0;
+        province = null;
+        termChecked = false;
+        submitDisabled = true;
+        submitStyle = "background-color: #b0b0b0; color: white; border: none; padding: 8px 16px; margin-left: 10px; border-radius: 5px; cursor: not-allowed;";
+    }
+
+    @Command
+    @NotifyChange({"submitDisabled", "submitStyle"})
+    public void onSubmitButton(){
+        submitDisabled = !submitDisabled;
+        if (submitDisabled) {
+            submitStyle = "background-color: #b0b0b0; color: white; border: none; padding: 8px 16px; margin-left: 10px; border-radius: 5px; cursor: not-allowed;";
+        } else {
+            submitStyle = "background-color: #28a745; color: white; border: none; padding: 8px 16px; margin-left: 10px; border-radius: 5px; cursor: pointer;";
+        }
     }
 
     public String getUsername() {
@@ -106,5 +136,29 @@ public class SearchViewModel{
 
     public void setSelectedPerson(Person selectedPerson) {
         this.selectedPerson = selectedPerson;
+    }
+
+    public boolean isSubmitDisabled() {
+        return submitDisabled;
+    }
+
+    public void setSubmitDisabled(boolean submitDisabled) {
+        this.submitDisabled = submitDisabled;
+    }
+
+    public String getSubmitStyle() {
+        return submitStyle;
+    }
+
+    public void setSubmitStyle(String submitStyle) {
+        this.submitStyle = submitStyle;
+    }
+
+    public boolean getTermChecked() {
+        return termChecked;
+    }
+
+    public void setTermChecked(boolean termChecked) {
+        this.termChecked = termChecked;
     }
 }
