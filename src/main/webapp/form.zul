@@ -1,108 +1,110 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
 <zk>
-    <vlayout>
-        <grid width="500px" self="@define(content)" style="background-color: #f9fafb; border-radius: 10px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
-            <auxhead>
-                <auxheader label="Registration Form" colspan="2" style="font-size: 18px; font-weight: bold; color: #333;"/>
-            </auxhead>
-            <columns>
-                <column width="30%" />
-                <column width="70%" />
-            </columns>
-            <rows>
-                <row>
-                    <label value="User Name:" style="color: #333;" />
-                    <textbox width="99%" id="username" onChange="checkFilled()" constraint="no empty" style="border: 1px solid #dfe1e5; border-radius: 4px; padding: 6px;" />
-                </row>
-                <row>
-                    <label value="Gender:" style="color: #333;" />
-                    <radiogroup id="gender" style="color: #555;">
-                        <radio id="male" label="Male" value="male" selected="true" />
-                        <radio id="female" label="Female" value="female" />
-                    </radiogroup>
-                </row>
-                <row>
-                    <label value="Birthday:" style="color: #333;" />
-                    <datebox id="birthday" cols="12" format="short" width="99%" onChange="checkFilled()" constraint="no empty, no future" style="border: 1px solid #dfe1e5; border-radius: 4px;" />
-                </row>
-                <row>
-                    <label value="Age:" style="color: #333;" />
-                    <spinner id="age" width="99%" onChange="checkFilled()" constraint="no empty, min 0" value="0" style="border: 1px solid #dfe1e5; border-radius: 4px;" />
-                </row>
-                <row>
-                    <label value="Province:" style="color: #333;" />
-                    <combobox id="province" width="99%" onChange="checkFilled()" constraint="no empty" style="border: 1px solid #dfe1e5; border-radius: 4px;">
-                        <comboitem label="Jakarta" />
-                        <comboitem label="Aceh" />
-                        <comboitem label="Lampung" />
-                        <comboitem label="Jambi" />
-                        <comboitem label="Bali" />
-                        <comboitem label="Riau" />
-                    </combobox>
-                </row>
-                <row spans="2" align="center">
-                    <hlayout>
-                        <checkbox id="term" disabled="true" onCheck="isCheckedTrue()" style="margin-right: 10px;" />
-                        <label value="Accept Term of Use (Click for Detail)" style="color: #007bff; cursor: pointer;" popup="termDetail, position=end_after" />
-                    </hlayout>
-                </row>
-                <row spans="2" align="right">
-                    <hlayout>
-                        <label value="Help (Ctrl+h)" style="color: #007bff; cursor: pointer;" popup="helpPopUp, position=end_after" />
-                        <button onClick="reset()" label="Reset" style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px; border-radius: 5px; cursor: pointer;" />
-                        <button id="submit" disabled="true" label="Submit" href="/table.zul" style="background-color: #b0b0b0; color: white; border: none; padding: 8px 16px; margin-left: 10px; border-radius: 5px; cursor: not-allowed;" />
-                    </hlayout>
-                </row>
-            </rows>
-        </grid>
-        <popup id="termDetail">
-            Term Of use
-<!--                <include src="/term.zul" />-->
-        </popup>
-        <popup id="helpPopUp">
-            Help Help Help
-<!--                <include sr c="/help.zul" />-->
-        </popup>
-        <zscript>
-            <![CDATA[
-                   public void reset(){
-                       username.setConstraint(null);
-                       birthday.setConstraint(null);
-                       age.setConstraint(null);
-                       province.setConstraint(null);
-                       username.setValue("");
-                       gender.setSelectedItem(male);
-                       birthday.setValue(null);
-                       age.setValue(0);
-                       province.setValue(null);
-                       term.setChecked(false);
-                       submit.setDisabled(true);
-                       submit.setStyle("background-color: #b0b0b0; color: white; cursor: not-allowed;");
-                       username.setConstraint("no empty");
-                       birthday.setConstraint("no empty, no future");
-                       age.setConstraint("no empty");
-                       province.setConstraint("no empty");
-                   }
-                   public void isCheckedTrue() {
-                       if (term.isChecked()) {
-                           submit.setDisabled(false);
-                           submit.setStyle("background-color: #28a745; color: white; cursor: pointer;");
-                       } else {
+    <window self="@define(content)" viewModel="@id('vm')@init('com.fif.viewModel.SearchViewModel')">
+        <vlayout>
+            <grid width="500px" style="background-color: #f9fafb; border-radius: 10px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+                <auxhead>
+                    <auxheader label="Registration Form" colspan="2" style="font-size: 18px; font-weight: bold; color: #333;"/>
+                </auxhead>
+                <columns>
+                    <column width="30%" />
+                    <column width="70%" />
+                </columns>
+                <rows>
+                    <row>
+                        <label value="User Name:" style="color: #333;" />
+                        <textbox width="99%" id="username" value="@save(vm.username)" constraint="no empty" style="border: 1px solid #dfe1e5; border-radius: 4px; padding: 6px;" />
+                    </row>
+                    <row>
+                        <label value="Gender:" style="color: #333;" />
+                        <radiogroup selectedItem="@bind(vm.gender)" style="color: #555;">
+                            <radio id="male" label="Male" value="male" selected="true" />
+                            <radio id="female" label="Female" value="female" />
+                        </radiogroup>
+                    </row>
+                    <row>
+                        <label value="Birthday:" style="color: #333;" />
+                        <datebox id="birthday" value="@save(vm.birthday)" cols="12" format="short" width="99%" constraint="no empty, no future" style="border: 1px solid #dfe1e5; border-radius: 4px;" />
+                    </row>
+                    <row>
+                        <label value="Age:" style="color: #333;" />
+                        <spinner width="99%" id="age" constraint="no empty, min 0" value="@save(vm.age)" style="border: 1px solid #dfe1e5; border-radius: 4px;" />
+                    </row>
+                    <row>
+                        <label value="Province:" style="color: #333;" />
+                        <combobox selectedItem="@save(vm.province)" width="99%" id="province" constraint="no empty" style="border: 1px solid #dfe1e5; border-radius: 4px;">
+                            <comboitem label="Jakarta" value="Jakarta"/>
+                            <comboitem label="Aceh" value="Aceh"/>
+                            <comboitem label="Lampung" value="Lampung"/>
+                            <comboitem label="Jambi" value="Jambi"/>
+                            <comboitem label="Bali" value="Bali"/>
+                            <comboitem label="Riau" value="Riau"/>
+                        </combobox>
+                    </row>
+                    <row spans="2" align="center">
+                        <hlayout>
+                            <checkbox id="term" disabled="false" onCheck="isCheckedTrue()" style="margin-right: 10px;" />
+                            <label value="Accept Term of Use (Click for Detail)" style="color: #007bff; cursor: pointer;" popup="termDetail, position=end_after" />
+                        </hlayout>
+                    </row>
+                    <row spans="2" align="right">
+                        <hlayout>
+                            <label value="Help (Ctrl+h)" style="color: #007bff; cursor: pointer;" popup="helpPopUp, position=end_after" />
+                            <button onClick="reset()" label="Reset" style="background-color: #f44336; color: white; border: none; padding: 8px 16px; margin-left: 10px; border-radius: 5px; cursor: pointer;" />
+                            <button id="submit" disabled="true" label="Submit" onClick="@command('add')" style="background-color: #b0b0b0; color: white; border: none; padding: 8px 16px; margin-left: 10px; border-radius: 5px; cursor: not-allowed;" />
+                        </hlayout>
+                    </row>
+                </rows>
+            </grid>
+            <popup id="termDetail">
+                Term Of use
+    <!--                <include src="/term.zul" />-->
+            </popup>
+            <popup id="helpPopUp">
+                Help Help Help
+    <!--                <include sr c="/help.zul" />-->
+            </popup>
+            <zscript>
+                <![CDATA[
+                       public void reset(){
+                           username.setConstraint(null);
+                           birthday.setConstraint(null);
+                           age.setConstraint(null);
+                           province.setConstraint(null);
+                           username.setValue("");
+                           gender.setSelectedItem(male);
+                           birthday.setValue(null);
+                           age.setValue(0);
+                           province.setValue(null);
+                           term.setChecked(false);
                            submit.setDisabled(true);
                            submit.setStyle("background-color: #b0b0b0; color: white; cursor: not-allowed;");
+                           username.setConstraint("no empty");
+                           birthday.setConstraint("no empty, no future");
+                           age.setConstraint("no empty");
+                           province.setConstraint("no empty");
                        }
-                   }
-                   public void checkFilled() {
-                       if (username.getValue() != "" && birthday.getValue() != null && age.getValue() != 0 && province.getValue() != null) {
-                           term.setDisabled(false);
-                       } else {
-                           term.setDisabled(true);
+                       public void isCheckedTrue() {
+                           if (term.isChecked()) {
+                               submit.setDisabled(false);
+                               submit.setStyle("background-color: #28a745; color: white; cursor: pointer;");
+                           } else {
+                               submit.setDisabled(true);
+                               submit.setStyle("background-color: #b0b0b0; color: white; cursor: not-allowed;");
+                           }
                        }
-                   }
-                   public void showPopup() {
-                       helpPopUp.open();
-                   }
-               ]]>
-        </zscript>
-    </vlayout>
+                       public void checkFilled() {
+                           if (username.getValue() != "" && birthday.getValue() != null && age.getValue() != 0 && province.getValue() != null) {
+                               term.setDisabled(false);
+                           } else {
+                               term.setDisabled(true);
+                           }
+                       }
+                       public void showPopup() {
+                           helpPopUp.open();
+                       }
+                   ]]>
+            </zscript>
+        </vlayout>
+    </window>
 </zk>

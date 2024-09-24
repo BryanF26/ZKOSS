@@ -1,29 +1,31 @@
 <?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
 <zk>
-    <window apply="com.fif.controller.SearchController" self="@define(content)">
+    <window title="Search" onOK="@command('search')" self="@define(content)" viewModel="@id('vm')@init('com.fif.viewModel.SearchViewModel')">
+        <button href="/form.zul" sclass="back-button" style="top:10px; left:10px">Back</button>
         <vlayout>
-            <button href="/form.zul" sclass="back-button" style="top:10px; left:10px">Back</button>
-            <textbox id="keyword"/>
-            <button id="searchButton" label="Search" iconSclass="z-icon-search"/>
+            Keyword:
+            <textbox value="@save(vm.keyword)"/>
+            <button label="Search" iconSclass="z-icon-search" onClick="@command('search')"/>
+            <button label="Delete" iconSclass="z-icon-trash" onClick="@command('delete')"/>
         </vlayout>
         <vlayout>
-            <listbox id="personListBox" autopaging="true" rows="5" emptyMessage="No person found in the result.">
-                <listhead>
+            <listbox model="@init(vm.personList)" selectedItem="@save(vm.selectedPerson)" autopaging="true" rows="5" emptyMessage="No person found in the result.">
+                <listhead sizable="true">
                     <listheader label="ID"/>
                     <listheader label="Username"/>
                     <listheader label="Gender"/>
                 </listhead>
                 <template name="model">
                     <listitem>
-                        <listcell label="${each.id}" />
-                        <listcell label="${each.username}" />
-                        <listcell label="${each.gender}" />
+                        <listcell label="@init(each.id)" />
+                        <listcell label="@init(each.username)" />
+                        <listcell label="@init(each.gender)" />
                     </listitem>
                 </template>
             </listbox>
-            <label id="birthdayLabel"/>
-            <label id="ageLabel"/>
-            <label id="provinceLabel"/>
+            <label value="@load(vm.selectedPerson.birthday)"/>
+            <label value="@load(vm.selectedPerson.age)"/>
+            <label value="@load(vm.selectedPerson.province)"/>
         </vlayout>
     </window>
 </zk>

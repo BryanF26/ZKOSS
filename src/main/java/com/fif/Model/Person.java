@@ -1,14 +1,16 @@
 package com.fif.Model;
 
+import java.util.Date;
+
 public class Person {
-    private long id;
+    private String id;
     private String username;
     private String gender;
-    private String birthday;
+    private Date birthday;
     private int age;
     private String province;
 
-    public Person(long id, String username, String gender, String birthday, int age, String province) {
+    public Person(String id, String username, String gender, Date birthday, int age, String province) {
         this.id = id;
         this.username = username;
         this.gender = gender;
@@ -17,11 +19,11 @@ public class Person {
         this.province = province;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -41,11 +43,11 @@ public class Person {
         this.gender = gender;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
