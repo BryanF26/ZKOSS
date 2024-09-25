@@ -13,4 +13,6 @@ public interface PersonService {
     public void add(String id, String username, String gender, Date birthday, int age, String province);
 
     public void delete(Person person);
+
+    public void update(Person person, String username, String gender, Date birthday, int age, String province);
 }

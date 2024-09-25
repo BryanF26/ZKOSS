@@ -48,4 +48,9 @@ public class PersonServiceImpl implements PersonService {
     public void delete(Person person) {
         repository.deletePerson(person);
     }
+
+    @Override
+    public void update(Person person, String username, String gender, Date birthday, int age, String province) {
+        repository.updatePerson(person, new Person(person.getId(), username, gender, birthday, age, province));
+    }
 }

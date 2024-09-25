@@ -4,6 +4,7 @@ import com.fif.Model.Person;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -102,5 +103,14 @@ public class PersonRepository {
 
     public void deletePerson(Person person){
         people.remove(person);
+    }
+
+    public void updatePerson(Person person, Person updatePerson) {
+        for (int i = 0; i < people.size(); i++) {
+            if (people.get(i).equals(person)) {
+                people.set(i, updatePerson);
+                break;
+            }
+        }
     }
 }

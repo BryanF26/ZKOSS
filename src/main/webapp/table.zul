@@ -49,7 +49,7 @@
 
     <window title="Search" onOK="@command('search')" self="@define(content)" viewModel="@id('vm')@init('com.fif.viewModel.SearchViewModel')">
         <button href="/form.zul" sclass="back-button" label="Go To Form" iconSclass="z-icon-file"/>
-        <vlayout style="padding: 20px;">
+        <vlayout style="padding: 20px;" visible="@bind(vm.tableVisible)">
             <label class="custom-label">Keyword:</label>
             <textbox value="@save(vm.keyword)" sclass="custom-textbox"/>
             <hlayout>
@@ -58,7 +58,7 @@
                 <button label="Edit" iconSclass="z-icon-edit" onClick="@command('updateForm')" sclass="custom-button"/>
             </hlayout>
         </vlayout>
-        <vlayout style="padding: 20px;">
+        <vlayout style="padding: 20px;" visible="@bind(vm.tableVisible)">
             <listbox model="@init(vm.personList)" selectedItem="@save(vm.selectedPerson)" autopaging="true" rows="5" sclass="custom-listbox" emptyMessage="No person found in the result.">
                 <listhead sizable="true">
                     <listheader label="ID"/>
@@ -76,6 +76,50 @@
             <label class="custom-label" value="@load(vm.selectedPerson.birthday)"/>
             <label class="custom-label" value="@load(vm.selectedPerson.age)"/>
             <label class="custom-label" value="@load(vm.selectedPerson.province)"/>
+        </vlayout>
+        <vlayout visible="@bind(vm.formVisible)">
+            <grid>
+                <columns>
+                    <column label="Field" />
+                    <column label="Value" />
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Username:" />
+                        <textbox value="@bind(vm.username)" />
+                    </row>
+                    <row>
+                        <label value="Gender:" />
+                        <radiogroup selectedItem="@bind(vm.gender)">
+                            <radio label="Male" value="Male" />
+                            <radio label="Female" value="Female" />
+                        </radiogroup>
+                    </row>
+                    <row>
+                        <label value="Birthday:" />
+                        <datebox value="@bind(vm.birthday)" />
+                    </row>
+                    <row>
+                        <label value="Age:" />
+                        <spinner value="@bind(vm.age)" />
+                    </row>
+                    <row>
+                        <label value="Province:" />
+                        <combobox value="@bind(vm.province)">
+                            <comboitem label="Jakarta" value="Jakarta" />
+                            <comboitem label="Aceh" value="Aceh" />
+                            <comboitem label="Lampung" value="Lampung" />
+                            <comboitem label="Jambi" value="Jambi" />
+                            <comboitem label="Bali" value="Bali" />
+                            <comboitem label="Riau" value="Riau" />
+                        </combobox>
+                    </row>
+                    <row>
+                        <button label="Submit" onClick="@command('update')" />
+                        <button label="Cancel" onClick="@command('cancelUpdate')" />
+                    </row>
+                </rows>
+            </grid>
         </vlayout>
     </window>
 </zk>

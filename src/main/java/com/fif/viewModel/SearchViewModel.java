@@ -22,6 +22,8 @@ public class SearchViewModel{
     private boolean submitDisabled = true;
     private boolean termChecked = false;
     private String submitStyle = "background-color: #b0b0b0; color: white; border: none; padding: 8px 16px; margin-left: 10px; border-radius: 5px; cursor: not-allowed;";
+    private boolean formVisible = false;
+    private boolean tableVisible = true;
 
     private List<Person> personList = new ListModelList<>();
 
@@ -36,7 +38,7 @@ public class SearchViewModel{
     @Command
     @NotifyChange({"username", "gender", "birthday", "age", "province","submitDisabled","submitStyle","termChecked"})
     public void add(){
-        personService.add(UUID.randomUUID().toString(), this.username, this.gender, this.birthday, this.age, this.province);
+        personService.add(UUID.randomUUID().toString(),username,gender,birthday,age,province);
         reset();
         search();
     }
@@ -54,29 +56,41 @@ public class SearchViewModel{
     public void delete(){
         if(selectedPerson == null) throw new RuntimeException("Please select person before delete");
         personService.delete(selectedPerson);
-        selectedPerson = null;
         search();
     }
 
     @Command
-    @NotifyChange("selectedPerson")
+    @NotifyChange({"username", "gender", "birthday", "age", "province","selectedPerson","tableVisible","formVisible"})
     public void update(){
         if(selectedPerson == null) throw new RuntimeException("Please select person before edit");
-//        personService.update(selectedPerson);
-        selectedPerson = null;
+        personService.update(selectedPerson,username,gender,birthday,age,province);
+        cancelUpdate();
+    }
+
+    @Command
+    @NotifyChange({"username", "gender", "birthday", "age", "province","selectedPerson","tableVisible","formVisible"})
+    public void cancelUpdate(){
+        username = "";
+        gender = null;
+        birthday = null;
+        age = 0;
+        province = null;
+        tableVisible = true;
+        formVisible = false;
         search();
     }
 
     @Command
-    @NotifyChange({"username", "gender", "birthday", "age", "province","selectedPerson"})
+    @NotifyChange({"username", "gender", "birthday", "age", "province","formVisible","tableVisible"})
     public void updateForm(){
         if(selectedPerson == null) throw new RuntimeException("Please select person before edit");
+        tableVisible = false;
+        formVisible = true;
         username = selectedPerson.getUsername();
         gender = selectedPerson.getGender();
         birthday = selectedPerson.getBirthday();
         age = selectedPerson.getAge();
         province = selectedPerson.getProvince();
-        Executions.sendRedirect("/form.zul");
     }
 
     @Command
@@ -179,11 +193,28 @@ public class SearchViewModel{
         this.submitStyle = submitStyle;
     }
 
-    public boolean getTermChecked() {
+    public boolean isTermChecked() {
         return termChecked;
     }
 
     public void setTermChecked(boolean termChecked) {
         this.termChecked = termChecked;
     }
+
+    public boolean isFormVisible() {
+        return formVisible;
+    }
+
+    public void setFormVisible(boolean formVisible) {
+        this.formVisible = formVisible;
+    }
+
+    public boolean isTableVisible() {
+        return tableVisible;
+    }
+
+    public void setTableVisible(boolean tableVisible) {
+        this.tableVisible = tableVisible;
+    }
+
 }
