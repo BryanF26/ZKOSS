@@ -40,6 +40,7 @@ public class SearchViewModel{
     public void add(){
         personService.add(UUID.randomUUID().toString(),username,gender,birthday,age,province);
         reset();
+        Executions.getCurrent().sendRedirect("/table.zul");
         search();
     }
 
