@@ -1,37 +1,57 @@
 package com.fif;
 
+import com.fif.entity.Log;
+import com.fif.services.MyService;
+import java.util.List;
+import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
-import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.lang.Strings;
+import org.zkoss.zk.ui.select.annotation.VariableResolver;
+import org.zkoss.zk.ui.select.annotation.WireVariable;
+import org.zkoss.zul.ListModel;
+import org.zkoss.zul.ListModelList;
 
+@VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class MyViewModel {
 
-	private int count;
-	private String name;
+	@WireVariable
+	private MyService myService;
+	private ListModelList<Log> logListModel;
+	private String message;
 
 	@Init
 	public void init() {
-		count = 100;
-		name = "Bryan";
+		List<Log> logList = myService.getLogs();
+		logListModel = new ListModelList<Log>(logList);
+	}
+
+	public ListModel<Log> getLogListModel() {
+		return logListModel;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	@Command
-	@NotifyChange("count")
-	public void cmd() {
-		++count;
+	public void addLog() {
+		if(Strings.isBlank(message)) {
+			return;
+		}
+		Log log = new Log(message);
+		log = myService.addLog(log);
+		logListModel.add(log);
 	}
 
 	@Command
-	@NotifyChange("name")
-	public void change() {
-		name = "ganti";
+	public void deleteLog(@BindingParam("log") Log log) {
+		myService.deleteLog(log);
+		logListModel.remove(log);
 	}
 
-	public int getCount() {
-		return count;
-	}
-
-	public String getName() {
-		return name;
-	}
 }
