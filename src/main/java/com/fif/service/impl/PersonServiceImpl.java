@@ -7,6 +7,7 @@ import com.fif.service.PersonService;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PersonServiceImpl implements PersonService {
 
@@ -25,18 +26,20 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public List<Person> search(String keyword) {
         List<Person> res = new ArrayList<Person>();
-        if(keyword == null || "".equals(keyword)){
-            res = personList;
-        } else{
-            for (Person p : personList){
-                if(p.getUsername().toLowerCase().contains(keyword.toLowerCase())){
-                    res.add(p);
-                } else if(p.getGender().equalsIgnoreCase(keyword.toLowerCase())){
-                    res.add(p);
-                }
-            }
-        }
-        return res;
+//        if(keyword == null || "".equals(keyword)){
+//            res = personList;
+//        } else{
+//            for (Person p : personList){
+//                if(p.getUsername().toLowerCase().contains(keyword.toLowerCase())){
+//                    res.add(p);
+//                } else if(p.getGender().equalsIgnoreCase(keyword.toLowerCase())){
+//                    res.add(p);
+//                }
+//            }
+//        }
+//        return res;
+        return personList.parallelStream().filter(person ->
+                keyword==null || keyword.isEmpty() || person.getUsername().toLowerCase().contains(keyword.toLowerCase()) || person.getGender().equalsIgnoreCase(keyword.toLowerCase())).collect(Collectors.toList());
     }
 
     @Override
