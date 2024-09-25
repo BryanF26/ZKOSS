@@ -1,8 +1,0 @@
-<<<<<<< Updated upstream
-com\fif\service\PersonService.class
-com\fif\Model\Person.class
-com\fif\repository\PersonRepository.class
-com\fif\service\impl\PersonServiceImpl.class
-com\fif\viewModel\SearchViewModel.class
-=======
->>>>>>> Stashed changes
