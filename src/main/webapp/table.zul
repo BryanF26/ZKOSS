@@ -86,7 +86,7 @@
                 <rows>
                     <row>
                         <label value="Username:" />
-                        <textbox value="@bind(vm.username)" />
+                        <textbox value="@bind(vm.username)" constraint="no empty"/>
                     </row>
                     <row>
                         <label value="Gender:" />
@@ -97,15 +97,15 @@
                     </row>
                     <row>
                         <label value="Birthday:" />
-                        <datebox value="@bind(vm.birthday)" />
+                        <datebox value="@bind(vm.birthday)" constraint="no empty, no future"/>
                     </row>
                     <row>
                         <label value="Age:" />
-                        <spinner value="@bind(vm.age)" />
+                        <spinner value="@bind(vm.age)" constraint="no empty, min 0"/>
                     </row>
                     <row>
                         <label value="Province:" />
-                        <combobox value="@bind(vm.province)">
+                        <combobox value="@bind(vm.province)" constraint="no empty">
                             <comboitem label="Jakarta" value="Jakarta" />
                             <comboitem label="Aceh" value="Aceh" />
                             <comboitem label="Lampung" value="Lampung" />
