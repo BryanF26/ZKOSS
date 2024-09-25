@@ -14,8 +14,8 @@
 			<!-- db is not persistent to disk
 			<property name="hibernate.connection.url" value="jdbc:hsqldb:mem:data/store" /> -->
 			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<!-- drop table every time
-			<property name="hibernate.hbm2ddl.auto" value="create" /> -->
+			<!-- drop table every time-->
+<!--			<property name="hibernate.hbm2ddl.auto" value="create" />-->
 		</properties>
 	</persistence-unit>
 </persistence>

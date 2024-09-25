@@ -1,7 +1,8 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
 <zk>
 	<window apply="org.zkoss.bind.BindComposer"
 		viewModel="@id('vm')@init('com.fif.MyViewModel')"
-		validationMessages="@id('vmsgs')" width="600px" vflex="1">
+		validationMessages="@id('vmsgs')" width="600px" vflex="1" self="@define(content)">
 		<vlayout>
 			<hbox align="center" hflex="1">
 				Log message: <textbox value="@save(vm.message)"

@@ -1,0 +1,6 @@
+com\fif\viewModel\MyViewModel2.class
+com\fif\entity\Person.class
+com\fif\repository\PersonRepository.class
+com\fif\services\impl\PersonServiceImpl.class
+com\fif\services\PersonService.class
+com\fif\viewModel\SearchViewModel.class

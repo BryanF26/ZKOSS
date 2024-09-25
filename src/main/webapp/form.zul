@@ -1,0 +1,134 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="template.zul"?>
+<zk>
+    <style>
+        /* General Button Style */
+        .custom-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+        }
+
+        .custom-button:hover {
+        background-color: #0056b3;
+        }
+
+        .disabled-button {
+        background-color: #b0b0b0;
+        color: white;
+        cursor: not-allowed;
+        }
+
+        .custom-input {
+        border: 1px solid #dfe1e5;
+        border-radius: 4px;
+        width: 100%;
+        }
+
+        .custom-label {
+        color: #333;
+        font-weight: bold;
+        }
+
+        /* Popup styling */
+        .custom-popup {
+        background-color: #f9fafb;
+        padding: 10px;
+        border: 1px solid #dfe1e5;
+        border-radius: 4px;
+        max-width: 300px;
+        color: #333;
+        }
+
+        /* Centering form container */
+        .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        }
+
+        .go-button{
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: #6c757d;
+        color: white;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        }
+    </style>
+
+    <window self="@define(content)" viewModel="@id('vm')@init('com.fif.viewModel.SearchViewModel')" border="none" width="100%">
+        <button href="/table.zul" sclass="go-button" label="Go To Detail Table" iconSclass="z-icon-table" />
+        <div class="centered-container">
+            <vlayout style="padding:20px">
+                <!-- Form Grid -->
+                <grid width="500px" style="background-color: #f9fafb; border-radius: 10px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+                    <auxhead>
+                        <auxheader label="Registration Form" colspan="2" style="font-size: 18px; font-weight: bold; color: #333;" />
+                    </auxhead>
+                    <columns>
+                        <column width="30%" />
+                        <column width="70%" />
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="User Name:" class="custom-label" />
+                            <textbox id="username" value="@bind(vm.username)" constraint="no empty" sclass="custom-input" />
+                        </row>
+                        <row>
+                            <label value="Gender:" class="custom-label" />
+                            <radiogroup selectedItem="@bind(vm.gender)" style="color: #555;">
+                                <radio id="male" label="Male" value="Male" iconSclass="z-icon-male"/>
+                                <radio id="female" label="Female" value="Female" iconSclass="z-icon-female"/>
+                            </radiogroup>
+                        </row>
+                        <row>
+                            <label value="Birthday:" class="custom-label" />
+                            <datebox id="birthday" value="@bind(vm.birthday)" format="short" constraint="no empty, no future" sclass="custom-input" />
+                        </row>
+                        <row>
+                            <label value="Age:" class="custom-label" />
+                            <spinner id="age" value="@bind(vm.age)" constraint="no empty, min 0" sclass="custom-input" />
+                        </row>
+                        <row>
+                            <label value="Province:" class="custom-label" />
+                            <combobox selectedItem="@bind(vm.province)" id="province" constraint="no empty" sclass="custom-input">
+                                <comboitem label="Jakarta" value="Jakarta"/>
+                                <comboitem label="Aceh" value="Aceh"/>
+                                <comboitem label="Lampung" value="Lampung"/>
+                                <comboitem label="Jambi" value="Jambi"/>
+                                <comboitem label="Bali" value="Bali"/>
+                                <comboitem label="Riau" value="Riau"/>
+                            </combobox>
+                        </row>
+                        <row spans="2" align="center">
+                            <hlayout>
+                                <checkbox id="term" checked="@bind(vm.termChecked)" onCheck="@command('onSubmitButton')" style="margin-right: 10px;" />
+                                <label value="Accept Term of Use (Click for Detail)" style="color: #007bff; cursor: pointer;" popup="termDetail, position=end_after" />
+                            </hlayout>
+                        </row>
+                        <row spans="2" align="right">
+                            <hlayout>
+                                <label value="Help (Ctrl+h)" style="color: #007bff; cursor: pointer;" popup="helpPopUp, position=end_after" />
+                                <button onClick="@command('reset')" label="Reset" sclass="custom-button" style="background-color: #f44336;" iconSclass="z-icon-refresh"/>
+                                <button id="submit" disabled="@bind(vm.submitDisabled)" label="Submit" onClick="@command('add')" style="@load(vm.submitStyle)" iconSclass="z-icon-forward"/>
+                            </hlayout>
+                        </row>
+                    </rows>
+                </grid>
+                <popup id="termDetail" class="custom-popup">
+                    <label value="Term of Use Details..." />
+                </popup>
+                <popup id="helpPopUp" class="custom-popup">
+                    <label value="Help Information..." />
+                </popup>
+            </vlayout>
+        </div>
+    </window>
+</zk>
