@@ -91,7 +91,7 @@ public class SearchViewModel{
     @Command
     @NotifyChange({"username", "gender", "birthday", "age", "province","selectedPerson","tableVisible","formVisible"})
     public void cancelUpdate(){
-        username = "";
+        username = null;
         gender = null;
         birthday = null;
         age = 0;
@@ -119,7 +119,7 @@ public class SearchViewModel{
     @Command
     @NotifyChange({"username", "gender", "birthday", "age", "province","submitDisabled","submitStyle","termChecked"})
     public void reset(){
-        username = "";
+        username = null;
         gender = null;
         birthday = null;
         age = 0;
@@ -130,12 +130,14 @@ public class SearchViewModel{
     }
 
     @Command
-    @NotifyChange({"submitDisabled", "submitStyle"})
+    @NotifyChange({"submitDisabled", "submitStyle","termChecked"})
     public void onSubmitButton(){
         submitDisabled = !submitDisabled;
-        if (submitDisabled) {
+        if (submitDisabled || username == null || gender == null || birthday == null || age == 0 || province == null) {
+            termChecked = false;
             submitStyle = "background-color: #b0b0b0; color: white; border: none; padding: 8px 16px; margin-left: 10px; border-radius: 5px; cursor: not-allowed;";
         } else {
+            termChecked = true;
             submitStyle = "background-color: #28a745; color: white; border: none; padding: 8px 16px; margin-left: 10px; border-radius: 5px; cursor: pointer;";
         }
     }

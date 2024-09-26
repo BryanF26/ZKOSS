@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5edbd543-3a27-4881-9b25-299ff2cce689" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/table.zul" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/table.zul" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db.lck" beforeDir="false" afterPath="$PROJECT_DIR$/data/db.lck" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db.log" beforeDir="false" afterPath="$PROJECT_DIR$/data/db.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/data/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db.script" beforeDir="false" afterPath="$PROJECT_DIR$/data/db.script" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fif/viewModel/SearchViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fif/viewModel/SearchViewModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
