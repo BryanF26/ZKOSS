@@ -5,37 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5edbd543-3a27-4881-9b25-299ff2cce689" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fif/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fif/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fif/entity/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fif/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fif/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fif/services/impl/UserDetailsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__Insert_initial_data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V2__Insert__data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/accessDenied.zul" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.zul" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/theme1-1.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db.lck" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/db.script" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fif/MyViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fif/viewModel/MyViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fif/entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fif/entity/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fif/repository/PersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fif/repository/PersonRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.zul" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.zul" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fif/MyViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fif/entity/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fif/entity/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fif/repository/PersonRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fif/repository/PersonRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/fif/viewModel/SearchViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/fif/viewModel/SearchViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-cli/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-cli/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db.lck" beforeDir="false" afterPath="$PROJECT_DIR$/data/db.lck" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/data/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/zk.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/zk.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,14 +41,15 @@
     "Application.Main.executor": "Run",
     "Maven.zk-day1 [clean].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "mvvm-real-database",
+    "git-widget-placeholder": "theme",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/68768/Documents/FIFGROUP/Materi/Materi IT/Deep Dive/Materi 3 ZK/Day 1/zk-day1/src/main/resources/db/migration",
+    "last_opened_file_path": "C:/Users/68768/Documents/FIFGROUP/Materi/Materi IT/Deep Dive/Materi 3 ZK/Day 1/zk-day1/src/main/webapp/WEB-INF/lib",
     "settings.editor.selected.configurable": "MavenSettings"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\68768\Documents\FIFGROUP\Materi\Materi IT\Deep Dive\Materi 3 ZK\Day 1\zk-day1\src\main\webapp\WEB-INF\lib" />
       <recent name="C:\Users\68768\Documents\FIFGROUP\Materi\Materi IT\Deep Dive\Materi 3 ZK\Day 1\zk-day1\src\main\resources\db\migration" />
       <recent name="C:\Users\68768\Documents\FIFGROUP\Materi\Materi IT\Deep Dive\Materi 3 ZK\Day 1\zk-day1\src\main\resources\db.migration" />
     </key>

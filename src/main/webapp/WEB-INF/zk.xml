@@ -9,5 +9,9 @@
 		<value>zk-day1</value>
 	</preference>
 	-->
-	
+	<library-property>
+		<name>org.zkoss.theme.preferred</name>
+		<value>theme1-1</value>
+	</library-property>
+
 </zk>
