@@ -19,8 +19,7 @@ public class PersonRepository {
     @Transactional(readOnly = true)
     public List<Person> queryAll() {
         Query query = em.createQuery("SELECT p FROM Person p");
-        List<Person> result = query.getResultList();
-        return result;
+        return (List<Person>) query.getResultList();
     }
 
     @Transactional(readOnly = true)
@@ -46,8 +45,7 @@ public class PersonRepository {
         Query query = em.createQuery("SELECT p FROM Person p WHERE LOWER(p.username) LIKE :kName or LOWER(p.gender) = :kGender");
         query.setParameter("kName", "%" + keyword.toLowerCase() + "%");
         query.setParameter("kGender", keyword.toLowerCase());
-        List<Person> result = query.getResultList();
-        return result;
+        return (List<Person>) query.getResultList();
     }
 
     @Transactional

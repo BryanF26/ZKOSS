@@ -9,22 +9,22 @@ public class Person implements Serializable, Cloneable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    private Long id;
 
     @Column(nullable = false)
-    String username;
+    private String username;
 
     @Column(nullable = false)
-    String gender;
+    private String gender;
 
     @Column(nullable = false)
-    Date birthday;
+    private Date birthday;
 
     @Column(nullable = false)
-    int age;
+    private int age;
 
     @Column(nullable = false)
-    String province;
+    private String province;
 
     public Person(){
 
